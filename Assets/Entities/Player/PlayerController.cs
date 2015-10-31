@@ -3,14 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	public float strafeSpeed = 10.0f;
-	public float minX = -10.0f;
-	public float maxX = 10.0f;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		float direction = GetHorizontalMove();
@@ -34,8 +27,6 @@ public class PlayerController : MonoBehaviour {
 	private void UpdateMovement(float directionX) {
 		float movementX = directionX * strafeSpeed * Time.deltaTime;
 		Vector3 move = new Vector3 (movementX, 0, 0);
-		Vector3 newPos = transform.position + move;
-		newPos.x = Mathf.Clamp (newPos.x, minX, maxX);
-		transform.position = newPos;
+		transform.position += move;
 	}
 }
