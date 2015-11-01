@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ShortLegStudio;
 
 public class FormationController : MonoBehaviour {
 	public GameObject enemyPrefab;
-	public Vector3 direction = Vector3.left;
 	public float formationSpeed = 10.0f;
 	public float height;
 	public float width;
-	public float minX;
-	public float maxX;
+
+	private Vector3 direction = Vector3.left;
+	private float minX;
+	private float maxX;
 
 	// Use this for initialization
 	void Start () {
+
+		minX = ViewportHelpers.GetBottomLeftBoundary (transform.position).x + width / 2;
+		maxX = ViewportHelpers.GetTopRightBoundary (transform.position).x - width / 2;
+
 		foreach (Transform child in transform) {
 			spawnEnemy (child);
 		}
