@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+	public GameObject LaserPrefab;
 	public float strafeSpeed = 10.0f;
+	public float fireLaserRate = 0.25f;
 
 	// Update is called once per frame
 	void Update () {
@@ -10,6 +12,30 @@ public class PlayerController : MonoBehaviour {
 		if (direction != 0) {
 			UpdateMovement(direction);
 		}
+
+
+		HandleWeapons ();
+
+	}
+
+
+	/// <summary>
+	/// Deals with the inputs and operations around firing shots
+	/// </summary>
+	private void HandleWeapons() {
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			InvokeRepeating("FireLaser", 0.00001f, fireLaserRate);
+		}
+		if (Input.GetKeyUp (KeyCode.Space)) {
+			CancelInvoke ("FireLaser");
+		}
+	}
+
+	/// <summary>
+	/// Creates a new Laser entity
+	/// </summary>
+	private void FireLaser() {
+		Instantiate (LaserPrefab, transform.position, Quaternion.identity); 
 	}
 
 	/// <summary>

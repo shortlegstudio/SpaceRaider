@@ -33,8 +33,12 @@ public class FormationController : MonoBehaviour {
 		transform.position += movement;
 
 		//Validate position, reverse if invalid
-		if (transform.position.x < minX || transform.position.x > maxX)
-			direction.x *= -1;
+		if (transform.position.x < minX)
+			direction = Vector3.right;
+
+		if (transform.position.x > maxX)
+			direction = Vector3.left;
+			
 	}
 
 	private void spawnEnemy(Transform position) {
