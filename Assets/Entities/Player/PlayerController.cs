@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 	/// Creates a new Laser entity
 	/// </summary>
 	private void FireLaser() {
-		Instantiate (LaserPrefab, transform.position, Quaternion.identity); 
+		Instantiate (LaserPrefab, transform.position, Quaternion.identity);
 	}
 
 	/// <summary>
