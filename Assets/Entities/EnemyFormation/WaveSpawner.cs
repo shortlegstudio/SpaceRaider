@@ -6,6 +6,7 @@ using System.Collections;
 /// </summary>
 public class WaveSpawner : MonoBehaviour {
 	public GameObject enemyPrefab;
+	public float enemySpawnDelay = 0.75f;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +28,7 @@ public class WaveSpawner : MonoBehaviour {
 	public bool IsEmpty() {
 		foreach (Transform positionSlot in transform) {
 			//If we find a single enemy, we must not be empty
-			if (positionSlot.childCount > 0) 
+			if (!IsPositionEmpty (positionSlot)) 
 				return false;
 		}
 		return true;
@@ -38,10 +39,38 @@ public class WaveSpawner : MonoBehaviour {
 	/// Creates a new wave of enemies
 	/// </summary>
 	void SpawnWave() {
-		foreach (Transform child in transform) {
+		Transform child = NextFreePosition ();
+		if (child) {
 			spawnEnemy (child);
 		}
+
+		if (NextFreePosition ()) {
+			Invoke ("SpawnWave", enemySpawnDelay);
+		}
+	
 	}
+
+	/// <summary>
+	/// Finds the next available position in the formation
+	/// </summary>
+	/// <returns>The free position.</returns>
+	Transform NextFreePosition() {
+		foreach (Transform positionSlot in transform) {
+			if (IsPositionEmpty(positionSlot) )
+				return positionSlot;
+		}
+		return null;
+	}
+
+	/// <summary>
+	/// Checks the position for children 
+	/// </summary>
+	/// <returns><c>true</c> if this position is empty; otherwise, <c>false</c>.</returns>
+	/// <param name="position">Position.</param>
+	bool IsPositionEmpty(Transform position) {
+		return position.childCount == 0;
+	}
+
 	
 	private void spawnEnemy(Transform position) {
 		Debug.Log ("Spawn Enemy");
