@@ -3,7 +3,6 @@ using System.Collections;
 using ShortLegStudio;
 
 public class FormationController : MonoBehaviour {
-	public GameObject enemyPrefab;
 	public float formationSpeed = 10.0f;
 	public float height;
 	public float width;
@@ -14,13 +13,8 @@ public class FormationController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		minX = ViewportHelpers.GetBottomLeftBoundary (transform.position).x + width / 2;
 		maxX = ViewportHelpers.GetTopRightBoundary (transform.position).x - width / 2;
-
-		foreach (Transform child in transform) {
-			spawnEnemy (child);
-		}
 	}
 	
 	// Update is called once per frame
@@ -38,17 +32,8 @@ public class FormationController : MonoBehaviour {
 
 		if (transform.position.x > maxX)
 			direction = Vector3.left;
-			
 	}
 
-	private void spawnEnemy(Transform position) {
-		Debug.Log ("Spawn Enemy");
-		GameObject go = Instantiate (enemyPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-
-		//Set the enemy to the formation position
-		//The second parameter (false) informs Unity to continue to use it's transform of 0,0,0 
-		go.transform.SetParent (position, false);
-	}
 
 	void OnDrawGizmos() {
 		Gizmos.DrawWireCube (transform.position, new Vector3 (width, height, 0));
