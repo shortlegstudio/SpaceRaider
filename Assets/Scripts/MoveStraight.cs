@@ -10,9 +10,7 @@ public class MoveStraight : MonoBehaviour {
 
 	void Start() {
 		float angle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg;
-		Debug.Log (angle);
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
 	}
 
 	// Update is called once per frame

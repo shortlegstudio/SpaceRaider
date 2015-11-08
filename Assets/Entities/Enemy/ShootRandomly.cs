@@ -17,7 +17,7 @@ public class ShootRandomly : MonoBehaviour {
 	}
 
 	private void FireShot() {
-		GameObject shot = Instantiate (ProjectileBase, this.transform.position, Quaternion.identity) as GameObject;
+		Instantiate (ProjectileBase, this.transform.position, Quaternion.identity);
 		shotCooldown = shootDelay;
 	}
 
