@@ -47,7 +47,6 @@ public class WaveSpawner : MonoBehaviour {
 		if (NextFreePosition ()) {
 			Invoke ("SpawnWave", enemySpawnDelay);
 		}
-	
 	}
 
 	/// <summary>

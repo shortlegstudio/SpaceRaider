@@ -3,6 +3,8 @@ using System.Collections;
 
 public class TakesDamage : MonoBehaviour {
 	public float Health = 10.0f;
+	public int Points = 0;
+
 
 	void OnTriggerEnter2D(Collider2D other) {
 		Projectile missile = other.GetComponent<Projectile> ();
@@ -17,8 +19,21 @@ public class TakesDamage : MonoBehaviour {
 		this.Health -= damage;
 
 		if (Health <= 0) {
-			Destroy (this.gameObject);
+			DestroyEntity();
+
 		}
 
+	}
+
+
+	/// <summary>
+	/// When an entity is destroyed because it's health is zero, execute relevant commands
+	/// </summary>
+	private void DestroyEntity() {
+		//Remove Game Object
+		Destroy (this.gameObject);
+
+		//Add Points for destroying it
+		ScoreTracker.GetInstance ().ScorePoints (Points);
 	}
 }
