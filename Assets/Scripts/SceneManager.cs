@@ -22,6 +22,7 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public void StartGame() {
+		ScoreTracker.Reset ();
 		LoadLevel ("Level01");
 	}
 
@@ -33,6 +34,10 @@ public class SceneManager : MonoBehaviour {
 
 	public void LoadNextLevel() {
 		Application.LoadLevel (Application.loadedLevel + 1);
+	}
+
+	public static SceneManager GetInstance() {
+		return FindObjectOfType<SceneManager> ();
 	}
 		
 }

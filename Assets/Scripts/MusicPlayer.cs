@@ -30,6 +30,9 @@ public class MusicPlayer : MonoBehaviour {
 	}
 
 	private void playNextSong() {
+		if (songList.Length == 0)
+			return;
+
 		_currentSong++;
 		if (_currentSong >= songList.Length) {
 			_currentSong = 0;
