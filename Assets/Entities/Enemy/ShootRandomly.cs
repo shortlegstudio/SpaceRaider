@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class ShootRandomly : MonoBehaviour {
+	public AudioClip shotSound;
+	public float shotVolume = 0.5f;
 	public float shootChance = 0.2f;
 	public float shootDelay = 0.5f;
 	public GameObject ProjectileBase;
@@ -18,6 +20,7 @@ public class ShootRandomly : MonoBehaviour {
 
 	private void FireShot() {
 		Instantiate (ProjectileBase, this.transform.position, Quaternion.identity);
+		AudioSource.PlayClipAtPoint (shotSound, this.transform.position, shotVolume);
 		shotCooldown = shootDelay;
 	}
 

@@ -7,6 +7,8 @@ using System.Collections;
 public class WaveSpawner : MonoBehaviour {
 	public GameObject enemyPrefab;
 	public float enemySpawnDelay = 0.75f;
+	public AudioClip spawnWaveSound;
+	public float spawnVolume;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +19,13 @@ public class WaveSpawner : MonoBehaviour {
 	void Update () {
 		if (IsEmpty ()) {
 			SpawnWave ();
+			PlayWaveSound();
 		}
 			
+	}
+
+	private void PlayWaveSound() {
+		AudioSource.PlayClipAtPoint (spawnWaveSound, this.transform.position, spawnVolume);
 	}
 
 	/// <summary>

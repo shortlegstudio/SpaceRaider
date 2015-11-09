@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class TakesDamage : MonoBehaviour {
+	public AudioClip soundOnDeath;
+	public float volumeOfDeathSound = 0.5f;
 	public float Health = 10.0f;
 	public int Points = 0;
 
@@ -35,5 +37,7 @@ public class TakesDamage : MonoBehaviour {
 
 		//Add Points for destroying it
 		ScoreTracker.GetInstance ().ScorePoints (Points);
+
+		AudioSource.PlayClipAtPoint (soundOnDeath, this.transform.position, volumeOfDeathSound);
 	}
 }

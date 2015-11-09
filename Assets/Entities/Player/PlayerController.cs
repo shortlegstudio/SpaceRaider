@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	public GameObject LaserPrefab;
+	public AudioClip LaserSound;
+	public float LaserVolume = 0.5f;
 	public float strafeSpeed = 10.0f;
 	public float fireLaserRate = 0.25f;
 
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 	/// </summary>
 	private void FireLaser() {
 		Instantiate (LaserPrefab, transform.position, Quaternion.identity);
+		AudioSource.PlayClipAtPoint (LaserSound, this.transform.position, LaserVolume);
 	}
 
 	/// <summary>
