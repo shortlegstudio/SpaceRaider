@@ -28,5 +28,6 @@ public class DiveBomb : MonoBehaviour {
 
 	void LaunchDiveBomb() {
 		_animator.SetBool ("DiveBombAttack", true);
+		_animator.SetFloat ("AttackMethod", Random.value);
 	}
 }

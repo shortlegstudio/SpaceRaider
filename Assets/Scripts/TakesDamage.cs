@@ -10,10 +10,17 @@ public class TakesDamage : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		Projectile missile = other.GetComponent<Projectile> ();
 		if (missile) {
-			TakeDamage(missile.GetDamage ());
-			missile.Hit();
+			TakeDamage (missile.GetDamage ());
+			missile.Hit ();
+		} else {
+			//If hitting another solid object take full damage
+			TakesDamage solidObject = other.GetComponent<TakesDamage>();
+			if (solidObject) {
+				TakeDamage(this.Health);
+			}
 		}
 	}
+
 
 	private void TakeDamage(float damage) {
 		Debug.Log ("Taking Damage");
