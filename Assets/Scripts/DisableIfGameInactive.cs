@@ -12,10 +12,6 @@ public class DisableIfGameInactive : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		bool enable = GameController.GameReady ();
-		if (enable)
-			Debug.Log ("ready");
-		else 
-			Debug.Log ("Disabling");
 
 		foreach (MonoBehaviour b in DisableList) {
 			b.enabled = enable;

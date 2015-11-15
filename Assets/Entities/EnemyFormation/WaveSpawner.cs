@@ -9,6 +9,7 @@ public class WaveSpawner : MonoBehaviour {
 	public float enemySpawnDelay = 0.75f;
 	public AudioClip spawnWaveSound;
 	public float spawnVolume;
+	public int spawnGrouping = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,6 @@ public class WaveSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("Wave Spawner is active: " + this.enabled);
 		if (IsEmpty ()) {
 			SpawnWave ();
 			PlayWaveSound();
@@ -45,15 +45,15 @@ public class WaveSpawner : MonoBehaviour {
 
 	/// <summary>
 	/// Creates a new wave of enemies
+	/// 
+	/// It queues all enemy spawning through Invokes to actually create enemies
+	/// This allows the wave to get fully spawned and not be continuously spawning
+	/// if player eliminates an enemy during the entry phase
 	/// </summary>
 	void SpawnWave() {
-		Transform child = NextFreePosition ();
-		if (child) {
-			spawnEnemy (child);
-		}
-
-		if (NextFreePosition ()) {
-			Invoke ("SpawnWave", enemySpawnDelay);
+		for (int spawnIndex = 0; spawnIndex < transform.childCount; spawnIndex+= spawnGrouping) {
+			for (int i = 0; i < spawnGrouping; i++)
+				Invoke ("SpawnEnemy", enemySpawnDelay * spawnIndex);
 		}
 	}
 
@@ -79,7 +79,13 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	
-	private void spawnEnemy(Transform position) {
+	private void SpawnEnemy() {
+		Transform position = NextFreePosition ();
+
+		//If we couldn't find a position than exit out
+		if (position == null)
+			return;
+
 		Debug.Log ("Spawn Enemy");
 		GameObject go = Instantiate (enemyPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 		
