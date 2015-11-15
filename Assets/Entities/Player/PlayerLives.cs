@@ -9,6 +9,7 @@ public class PlayerLives : MonoBehaviour {
 	}
 
 	void OnDestroy() {
+		GameController.PlayerDied ();
 		SceneManager.GetInstance ().LoadLevel ("GameOver");
 	}
 }

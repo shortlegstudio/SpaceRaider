@@ -17,6 +17,7 @@ public class WaveSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log ("Wave Spawner is active: " + this.enabled);
 		if (IsEmpty ()) {
 			SpawnWave ();
 			PlayWaveSound();

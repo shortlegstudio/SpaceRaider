@@ -15,4 +15,11 @@ public class JustOneInstance : MonoBehaviour {
 		}
 	}
 
+	public static GameObject GetInstance(string name) {
+		if (instance.ContainsKey (name)) {
+			return instance [name];
+		}
+
+		return null;
+	}
 }

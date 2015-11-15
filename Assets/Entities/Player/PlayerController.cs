@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour {
 	public float strafeSpeed = 10.0f;
 	public float fireLaserRate = 0.25f;
 
+	void Start() {
+		GameController.PlayerOneSpawning ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 		float direction = GetHorizontalMove();
