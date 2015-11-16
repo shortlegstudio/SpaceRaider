@@ -7,9 +7,11 @@ using System.Collections;
 public class WaveSpawner : MonoBehaviour {
 	public GameObject enemyPrefab;
 	public float enemySpawnDelay = 0.75f;
-	public AudioClip spawnWaveSound;
 	public float spawnVolume;
 	public int spawnGrouping = 1;
+	public int waveActivated = 0;
+	public int waveDisabled = 10000;
+	public int waveSpawned = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -18,15 +20,25 @@ public class WaveSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (IsEmpty ()) {
+		if (IsEmpty () && ReadyForWave()) {
 			SpawnWave ();
-			PlayWaveSound();
 		}
 			
 	}
 
-	private void PlayWaveSound() {
-		AudioSource.PlayClipAtPoint (spawnWaveSound, this.transform.position, spawnVolume);
+	/// <summary>
+	/// This looks at the active wave and the last wave spawned by this formation and decides
+	/// whether it is time to spawn another one
+	/// </summary>
+	/// <returns><c>true</c>, if for wave was readyed, <c>false</c> otherwise.</returns>
+	private bool ReadyForWave() {
+		int currentWave = GameController.GetInstance ().WaveNumber;
+
+		//We already spawned for this level, ignore
+		if (currentWave == waveSpawned)
+			return false;
+
+		return currentWave >= waveActivated && currentWave < waveDisabled;
 	}
 
 	/// <summary>
@@ -51,6 +63,7 @@ public class WaveSpawner : MonoBehaviour {
 	/// if player eliminates an enemy during the entry phase
 	/// </summary>
 	void SpawnWave() {
+		waveSpawned = GameController.GetInstance ().WaveNumber;
 		for (int spawnIndex = 0; spawnIndex < transform.childCount; spawnIndex+= spawnGrouping) {
 			for (int i = 0; i < spawnGrouping; i++)
 				Invoke ("SpawnEnemy", enemySpawnDelay * spawnIndex);

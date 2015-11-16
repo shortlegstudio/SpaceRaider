@@ -8,6 +8,10 @@ public class GameController : MonoBehaviour {
 	public Text WaveText;
 	public bool GameIsReady = false;
 	public int WaveNumber = 0;
+	public float volume = 0.5f;
+
+	public AudioClip WaveSpawned;
+
 
 	public static GameController GetInstance() {
 		return GameObject.FindObjectOfType<GameController> ();
@@ -37,6 +41,7 @@ public class GameController : MonoBehaviour {
 	void HideWaveText() {
 		WaveText.enabled = false;
 		GameIsReady = true;
+		AudioSource.PlayClipAtPoint (WaveSpawned, this.transform.position, volume);
 	}
 
 	void ShowPlayerOneText() {

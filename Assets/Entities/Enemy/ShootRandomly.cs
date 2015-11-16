@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class ShootRandomly : MonoBehaviour {
-	public AudioClip shotSound;
-	public float shotVolume = 0.5f;
 	public float shootChance = 0.2f;
 	public float shootDelay = 0.5f;
 	public GameObject ProjectileBase;
@@ -15,16 +13,14 @@ public class ShootRandomly : MonoBehaviour {
 		if (IsShooting ()) {
 			FireShot();
 		}
-
 	}
 
 	private void FireShot() {
 		Instantiate (ProjectileBase, this.transform.position, Quaternion.identity);
-		AudioSource.PlayClipAtPoint (shotSound, this.transform.position, shotVolume);
 		shotCooldown = shootDelay;
 	}
 
 	private bool IsShooting() {
-		return Random.value < shootChance && shotCooldown <=0;
+		return Random.value < shootChance * Time.deltaTime && shotCooldown <=0;
 	}
 }
