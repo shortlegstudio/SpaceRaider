@@ -18,16 +18,22 @@ public class GameController : MonoBehaviour {
 	}
 
 	public static void PlayerOneSpawning() {
-		GetInstance ().ShowPlayerOneText ();
+		GameController instance = GetInstance ();
+		if (instance)
+			instance.ShowPlayerOneText ();
 		NextWave ();
 	}
 
 	public static void PlayerDied() {
-		GetInstance ().GameIsReady = false;
+		GameController instance = GetInstance ();
+		if (instance)
+			instance.GameIsReady = false;
 	}
 
 	public static void NextWave() {
-		GetInstance().ShowWaveText ();
+		GameController instance = GetInstance ();
+		if (instance)
+			instance.ShowWaveText ();
 	}
 
 	void ShowWaveText() {
