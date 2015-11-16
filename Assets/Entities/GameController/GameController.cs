@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
 	public bool GameIsReady = false;
 	public int WaveNumber = 0;
 	public float volume = 0.5f;
-
+	public GameObject player;
 	public AudioClip WaveSpawned;
 
 
@@ -24,16 +24,22 @@ public class GameController : MonoBehaviour {
 		NextWave ();
 	}
 
-	public static void PlayerDied() {
-		GameController instance = GetInstance ();
-		if (instance)
-			instance.GameIsReady = false;
-	}
-
 	public static void NextWave() {
 		GameController instance = GetInstance ();
 		if (instance)
 			instance.ShowWaveText ();
+	}
+
+	public static void PlayerDied(int lives) {
+		if (lives <= 0) {
+			SceneManager.GetInstance ().LoadLevel ("GameOver");
+		} else {
+			GetInstance().Invoke ("SpawnPlayer", 2);
+		}
+	}
+
+	void SpawnPlayer() {
+		Instantiate (player);
 	}
 
 	void ShowWaveText() {
