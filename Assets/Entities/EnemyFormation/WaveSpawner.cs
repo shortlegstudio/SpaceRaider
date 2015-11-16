@@ -92,5 +92,9 @@ public class WaveSpawner : MonoBehaviour {
 		//Set the enemy to the formation position
 		//The second parameter (false) informs Unity to continue to use it's transform of 0,0,0 
 		go.transform.SetParent (position, false);
+
+		//Figure out if we want to enter on the left or right
+		Animator animator = go.GetComponent<Animator> ();
+		animator.SetFloat ("ArrivalDirection", Random.value);
 	}
 }
