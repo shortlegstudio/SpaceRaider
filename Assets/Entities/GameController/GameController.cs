@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour {
 	public float volume = 0.5f;
 	public GameObject player;
 	public AudioClip WaveSpawned;
-	public int GameOverDelay = 5;
 
 
 	public static GameController GetInstance() {
@@ -33,9 +32,9 @@ public class GameController : MonoBehaviour {
 
 	public static void PlayerDied(int lives) {
 		if (lives <= 0) {
-			SceneManager.GetInstance ().Invoke ("GameOver", GameOverDelay);
+			SceneManager.GetInstance ().Invoke ("LoadNextLevel", 3);
 		} else {
-			GetInstance().Invoke ("SpawnPlayer", 2);
+			GetInstance().Invoke ("SpawnPlayer", 3);
 		}
 	}
 

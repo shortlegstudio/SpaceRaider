@@ -16,8 +16,8 @@ code to develop before refactoring, but it can start to feel out of place.
 
 ## TODO - Things still to complete
  * When Player dies giving time to get back into the game
- * Flash a score number in the explosion of each alien killed?
  * Show a flash when hitting a target with the laser
+ * Show damage when health is reduced
  * Powerups that fall and give bonuses 
  * Credits screen
  * Start up Splash Screen

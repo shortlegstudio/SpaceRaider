@@ -28,9 +28,7 @@ public class TakesDamage : MonoBehaviour {
 
 		if (Health <= 0) {
 			DestroyEntity();
-
 		}
-
 	}
 
 
@@ -39,7 +37,11 @@ public class TakesDamage : MonoBehaviour {
 	/// </summary>
 	private void DestroyEntity() {
 		//Create death clip object
-		Instantiate (DeathClip, this.transform.position, Quaternion.identity);
+		GameObject clip = Instantiate (DeathClip, this.transform.position, Quaternion.identity) as GameObject;
+
+		//Show points if available
+		if (Points != 0)
+			clip.GetComponentInChildren<TextMesh> ().text = Points.ToString ();
 
 		//Remove Game Object
 		Destroy (this.gameObject);
