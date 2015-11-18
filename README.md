@@ -15,8 +15,6 @@ code to develop before refactoring, but it can start to feel out of place.
  working.
 
 ## TODO - Things still to complete
- * Dive bomb still feel forced and not smooth
- * Player death sequence 
  * When Player dies giving time to get back into the game
  * Flash a score number in the explosion of each alien killed?
  * Show a flash when hitting a target with the laser
