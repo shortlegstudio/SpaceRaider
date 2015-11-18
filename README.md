@@ -13,6 +13,7 @@ code to develop before refactoring, but it can start to feel out of place.
  * Make it Fun! stage is challenging and the hardest part. I've always focused on coding
  and learned more from working through all the changes needed after the basic game was
  working.
+ * Script Execution Order is a dependency problem. This should be avoided 
 
 ## TODO - Things still to complete
  * When Player dies giving time to get back into the game
@@ -23,7 +24,10 @@ code to develop before refactoring, but it can start to feel out of place.
  * Start up Splash Screen
  * Maybe a bonus level every 5 or ten levels? Like dodge asteroids?
  * Extra lives
- * Arrival animation is coming in too low and takes out player
+ * During Arrival phase enemies should not shoot. Too difficult to dodge, maybe this is based on Y coordinate?
+ * Create different levels of enemies, first swoopers should be one shot-kills. Later make them tougher and different
+ color worth more points...
+
   
 
 ## Music Credits
