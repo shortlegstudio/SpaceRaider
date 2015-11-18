@@ -15,7 +15,7 @@ code to develop before refactoring, but it can start to feel out of place.
  working.
 
 ## TODO - Things still to complete
- * Dive bomb and arrival animations still feel forced and not smooth
+ * Dive bomb still feel forced and not smooth
  * Player death sequence 
  * When Player dies giving time to get back into the game
  * Flash a score number in the explosion of each alien killed?
@@ -25,6 +25,7 @@ code to develop before refactoring, but it can start to feel out of place.
  * Start up Splash Screen
  * Maybe a bonus level every 5 or ten levels? Like dodge asteroids?
  * Extra lives
+ * Arrival animation is coming in too low and takes out player
   
 
 ## Music Credits
