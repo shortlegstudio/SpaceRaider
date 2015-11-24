@@ -23,7 +23,6 @@ code to develop before refactoring, but it can start to feel out of place.
  * Credits screen
  * Start up Splash Screen
  * Maybe a bonus level every 5 or ten levels? Like dodge asteroids?
- * Extra lives
  * Create different levels of enemies, first swoopers should be one shot-kills. Later make them tougher and different
  color worth more points...
 

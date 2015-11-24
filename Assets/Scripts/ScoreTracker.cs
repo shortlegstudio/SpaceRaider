@@ -32,4 +32,8 @@ public class ScoreTracker : MonoBehaviour {
 	public static string GetScoreString() {
 		return score.ToString ("D7");
 	}
+
+	public static int GetScore() {
+		return score;
+	}
 }
