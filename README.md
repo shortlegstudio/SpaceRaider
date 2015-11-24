@@ -20,15 +20,14 @@ code to develop before refactoring, but it can start to feel out of place.
  * Show a flash when hitting a target with the laser
  * Show damage when health is reduced
  * Powerups that fall and give bonuses 
- * Credits screen
  * Start up Splash Screen
  * Maybe a bonus level every 5 or ten levels? Like dodge asteroids?
  * Create different levels of enemies, first swoopers should be one shot-kills. Later make them tougher and different
  color worth more points...
 
   
+## Credits
 
-## Music Credits
-
-The Race by Fullscore Provided by www.freesoundtrackmusic.com
-Over the Limit by Fullscore Provided by www.freesoundtrackmusic.com
+"The Race" by Fullscore Provided by www.freesoundtrackmusic.com
+"Over the Limit" by Fullscore Provided by www.freesoundtrackmusic.com
+Space Shooter Redux by www.kenney.nl
