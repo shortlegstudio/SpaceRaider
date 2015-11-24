@@ -6,6 +6,7 @@ public class ShootRandomly : MonoBehaviour {
 	public float shootDelay = 0.5f;
 	public GameObject ProjectileBase;
 	private float shotCooldown = 0f;
+	public float minYToShoot = 0;
 
 	// Update is called once per frame
 	void Update () {
@@ -21,6 +22,7 @@ public class ShootRandomly : MonoBehaviour {
 	}
 
 	private bool IsShooting() {
-		return Random.value < shootChance * Time.deltaTime && shotCooldown <=0;
+		return Random.value < shootChance * Time.deltaTime && shotCooldown <=0 &&
+			transform.position.y >= minYToShoot;
 	}
 }

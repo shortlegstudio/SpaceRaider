@@ -24,7 +24,6 @@ code to develop before refactoring, but it can start to feel out of place.
  * Start up Splash Screen
  * Maybe a bonus level every 5 or ten levels? Like dodge asteroids?
  * Extra lives
- * During Arrival phase enemies should not shoot. Too difficult to dodge, maybe this is based on Y coordinate?
  * Create different levels of enemies, first swoopers should be one shot-kills. Later make them tougher and different
  color worth more points...
 
