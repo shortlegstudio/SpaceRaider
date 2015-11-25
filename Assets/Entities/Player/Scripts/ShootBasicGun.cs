@@ -9,6 +9,7 @@ public class ShootBasicGun : MonoBehaviour {
 	public float DamagePerLevel = 25f;
 	public float FireRatePerLevel = 0.01f;
 	private int WeaponLevel = 0;
+	private int MaxLevel = 10;
 
 	// Update is called once per frame
 	void Update () {
@@ -43,6 +44,7 @@ public class ShootBasicGun : MonoBehaviour {
 
 	public void UpgradeWeapon() {
 		WeaponLevel++;
+		WeaponLevel = Mathf.Clamp (WeaponLevel, 0, MaxLevel);
 		Debug.LogFormat ("Weapon Level: {0}", WeaponLevel);
 	}
 }

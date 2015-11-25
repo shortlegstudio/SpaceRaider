@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 		GameController instance = GetInstance ();
 		if (instance)
 			instance.ShowPlayerOneText ();
-		NextWave ();
+		//NextWave ();
 	}
 
 	public static void NextWave() {
@@ -38,6 +38,10 @@ public class GameController : MonoBehaviour {
 		} else {
 			GetInstance().Invoke ("SpawnPlayer", 3);
 		}
+	}
+
+	void Start() {
+		NextWave ();
 	}
 
 	void Update() {

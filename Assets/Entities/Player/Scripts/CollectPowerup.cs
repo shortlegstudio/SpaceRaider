@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CollectPowerup : MonoBehaviour {
 	private ShootBasicGun shoot;
+	public AudioClip CaughtSound;
+	public float volume = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +16,7 @@ public class CollectPowerup : MonoBehaviour {
 			Debug.Log ("Caught Powerup");
 			shoot.UpgradeWeapon();
 			Destroy (other.gameObject);
+			AudioSource.PlayClipAtPoint(CaughtSound, gameObject.transform.position);
 		}
 	}
 }
