@@ -6,12 +6,10 @@ public class ShootBasicGun : MonoBehaviour {
 	public float fireLaserRate = 0.25f;
 	public AudioClip LaserSound;
 	public float LaserVolume = 0.5f;
+	public float DamagePerLevel = 25f;
+	public float FireRatePerLevel = 0.01f;
+	private int WeaponLevel = 0;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		HandleWeapons ();
@@ -22,7 +20,7 @@ public class ShootBasicGun : MonoBehaviour {
 	/// </summary>
 	private void HandleWeapons() {
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			InvokeRepeating("FireLaser", 0.00001f, fireLaserRate);
+			InvokeRepeating("FireLaser", 0.00001f, fireLaserRate - (FireRatePerLevel * WeaponLevel));
 		}
 		if (Input.GetKeyUp (KeyCode.Space)) {
 			CancelInvoke ("FireLaser");
@@ -33,7 +31,18 @@ public class ShootBasicGun : MonoBehaviour {
 	/// Creates a new Laser entity
 	/// </summary>
 	private void FireLaser() {
-		Instantiate (LaserPrefab, transform.position, Quaternion.identity);
+		GameObject laser = (GameObject)Instantiate (LaserPrefab, transform.position, Quaternion.identity);
+		Projectile proj = laser.GetComponent<Projectile> ();
+		proj.Damage += DamagePerLevel * WeaponLevel;
+		Vector3 scale = Vector3.one;
+		scale.y += 0.05f * WeaponLevel;
+		scale.x += 0.025f * WeaponLevel;
+		proj.transform.localScale = scale;
 		AudioSource.PlayClipAtPoint (LaserSound, this.transform.position, LaserVolume);
+	}
+
+	public void UpgradeWeapon() {
+		WeaponLevel++;
+		Debug.LogFormat ("Weapon Level: {0}", WeaponLevel);
 	}
 }

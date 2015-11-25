@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour {
 	public float volume = 0.5f;
 	public GameObject player;
 	public AudioClip WaveSpawned;
+	private float LastWaveCheck = 0;
+	private float MinTimeBetweenCheck = 1f;
 
 
 	public static GameController GetInstance() {
@@ -35,6 +37,17 @@ public class GameController : MonoBehaviour {
 			SceneManager.GetInstance ().Invoke ("LoadNextLevel", 3);
 		} else {
 			GetInstance().Invoke ("SpawnPlayer", 3);
+		}
+	}
+
+	void Update() {
+		if (GameIsReady && GameObject.FindGameObjectsWithTag ("Enemy").Length == 0) {
+			LastWaveCheck += Time.deltaTime;
+			if (LastWaveCheck > MinTimeBetweenCheck) {
+				NextWave ();
+			}
+		} else {
+			LastWaveCheck = 0;
 		}
 	}
 
