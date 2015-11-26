@@ -56,7 +56,12 @@ public class GameController : MonoBehaviour {
 	}
 
 	void SpawnPlayer() {
-		Instantiate (player);
+		//Check if there are still projectiles, if so don't spawn the enemy just yet
+		if (GameObject.FindObjectsOfType<Projectile> ().Length > 0) {
+			Invoke ("SpawnPlayer", 1);
+		} else {
+			Instantiate (player);
+		}
 	}
 
 	void ShowWaveText() {
@@ -86,6 +91,6 @@ public class GameController : MonoBehaviour {
 
 
 	public static bool GameReady() {
-		return GetInstance().GameIsReady;
+		return GetInstance().GameIsReady && GameObject.FindObjectOfType<PlayerController>();
 	}
 }

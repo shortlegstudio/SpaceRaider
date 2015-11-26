@@ -5,7 +5,7 @@ public class TakesDamage : MonoBehaviour {
 	public GameObject DeathClip;
 	public float Health = 10.0f;
 	public int Points = 0;
-
+	public GameObject HitAnimation;
 
 	void OnTriggerEnter2D(Collider2D other) {
 		Projectile missile = other.GetComponent<Projectile> ();
@@ -28,6 +28,10 @@ public class TakesDamage : MonoBehaviour {
 
 		if (Health <= 0) {
 			DestroyEntity();
+		}
+
+		if (HitAnimation) {
+			Instantiate(HitAnimation, gameObject.transform.position,Quaternion.identity);
 		}
 	}
 

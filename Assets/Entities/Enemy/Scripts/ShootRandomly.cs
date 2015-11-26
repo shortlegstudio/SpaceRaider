@@ -23,6 +23,7 @@ public class ShootRandomly : MonoBehaviour {
 
 	private bool IsShooting() {
 		return Random.value < shootChance * Time.deltaTime && shotCooldown <=0 &&
-			transform.position.y >= minYToShoot;
+			transform.position.y >= minYToShoot &&
+				GameController.GameReady();
 	}
 }
