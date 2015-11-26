@@ -18,8 +18,8 @@ code to develop before refactoring, but it can start to feel out of place.
 ## TODO - Things still to complete
  * Show damage when health is reduced
  * Maybe a bonus level every 5 or ten levels? Like dodge asteroids?
- * Create different levels of enemies, first swoopers should be one shot-kills. Later make them tougher and different
- color worth more points...
+ * Create different levels of enemies, first swoopers should be one shot-kills. Later make them tougher and different color worth more points...
+ * Design formations so that each phase that adds more in is just a subset of the formations. Makes it easier to manage but also provides more of an experience of the game progressing
 
   
 ## Credits
