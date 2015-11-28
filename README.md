@@ -27,7 +27,7 @@ code to develop before refactoring, but it can start to feel out of place.
   
 ## Credits
 
-"The Race" by Fullscore Provided by www.freesoundtrackmusic.com
-"Over the Limit" by Fullscore Provided by www.freesoundtrackmusic.com
-Space Shooter Redux by www.kenney.nl
-Fonts from: http://dafont.com and http://typodermicfonts.com/
+ * "The Race" by Fullscore Provided by www.freesoundtrackmusic.com
+ * "Over the Limit" by Fullscore Provided by www.freesoundtrackmusic.com
+ * Space Shooter Redux by www.kenney.nl
+ * Fonts from: http://dafont.com and http://typodermicfonts.com/
