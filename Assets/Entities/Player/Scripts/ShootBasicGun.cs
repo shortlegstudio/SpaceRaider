@@ -77,7 +77,7 @@ public class ShootBasicGun : MonoBehaviour {
 	private void CreateMassiveProjectile(Vector3 pos) {
 		GameObject laser = (GameObject)Instantiate (LaserPrefab, pos, Quaternion.identity);
 		Projectile proj = laser.GetComponent<Projectile> ();
-		proj.Damage += DamagePerLevel * WeaponLevel;
+		proj.Damage += DamagePerLevel * WeaponLevel * 10;	//Replacing with single blast, let's make it crazy strong
 		Vector3 scale = Vector3.one;
 		scale.y += 1;
 		scale.x += 3;
