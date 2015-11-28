@@ -6,6 +6,7 @@ public class LivesTracker : MonoBehaviour {
 	public int Lives;
 	public Text LivesText;
 	public int increment = 10000;
+	public AudioClip ExtraLife;
 
 	private int nextLife = 0;
 
@@ -20,6 +21,8 @@ public class LivesTracker : MonoBehaviour {
 			Lives++;
 			RefreshText ();
 			nextLife += increment;
+			AudioSource.PlayClipAtPoint(ExtraLife, Vector3.zero, 0.4f);
+
 		}
 	}
 
