@@ -23,6 +23,10 @@ public class TakesDamage : MonoBehaviour {
 
 
 	private void TakeDamage(float damage) {
+		//Don't take damage if there is a shield attached
+		if(GetComponentInChildren<Shield>() != null && !CompareTag ("Shield"))
+			return;
+
 		Debug.Log ("Taking Damage");
 		this.Health -= damage;
 
@@ -41,11 +45,13 @@ public class TakesDamage : MonoBehaviour {
 	/// </summary>
 	private void DestroyEntity() {
 		//Create death clip object
-		GameObject clip = Instantiate (DeathClip, this.transform.position, Quaternion.identity) as GameObject;
-
-		//Show points if available
-		if (Points != 0)
-			clip.GetComponentInChildren<TextMesh> ().text = Points.ToString ();
+		if (DeathClip) {
+			GameObject clip = Instantiate (DeathClip, this.transform.position, Quaternion.identity) as GameObject;
+			//Show points if available
+			if (Points != 0) {
+				clip.GetComponentInChildren<TextMesh> ().text = Points.ToString ();
+			}
+		}
 
 		//Remove Game Object
 		Destroy (this.gameObject);

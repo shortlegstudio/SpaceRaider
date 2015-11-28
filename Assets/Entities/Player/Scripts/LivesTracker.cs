@@ -5,7 +5,7 @@ using System.Collections;
 public class LivesTracker : MonoBehaviour {
 	public int Lives;
 	public Text LivesText;
-	public int increment = 5000;
+	public int increment = 10000;
 
 	private int nextLife = 0;
 
